@@ -1,17 +1,21 @@
 package br.com.fiap.boundaryservice.service.implementation;
 
-import br.com.fiap.boundaryservice.model.Payment;
+import br.com.fiap.boundaryservice.model.dto.PaymentDTO;
+import br.com.fiap.boundaryservice.model.entity.Payment;
+import br.com.fiap.boundaryservice.model.mapper.PaymentMapper;
 import br.com.fiap.boundaryservice.repository.IPaymentRepository;
 import br.com.fiap.boundaryservice.service.IPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class PaymentService implements IPaymentService {
   private final IPaymentRepository repository;
+
+  @Autowired
+  PaymentMapper paymentMapper;
 
   @Autowired
   public PaymentService(IPaymentRepository repository) {
@@ -31,7 +35,11 @@ public class PaymentService implements IPaymentService {
   }
 
   @Override
-  public Payment createPayment(Payment payment) {
-    return this.repository.save(payment);
+  public PaymentDTO createPayment(PaymentDTO paymentDTO) {
+    Payment paymentEntity = paymentMapper.toEntity(paymentDTO);
+
+    paymentEntity = this.repository.save(paymentEntity);
+    return paymentMapper.toDTO(paymentEntity);
   }
+
 }
