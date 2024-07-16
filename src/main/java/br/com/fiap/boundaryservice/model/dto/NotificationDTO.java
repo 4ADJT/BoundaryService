@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 import java.util.List;
@@ -25,9 +26,9 @@ public record NotificationDTO(
     @NotNull(message = "Confirmation is required.")
     boolean confirmation,
 
-    LocalDateTime createdAt,
+    Instant createdAt,
 
-    LocalDateTime updatedAt
+    Instant updatedAt
 
 ) {
 }
