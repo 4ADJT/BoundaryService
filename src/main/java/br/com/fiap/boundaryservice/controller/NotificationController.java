@@ -39,9 +39,9 @@ public class NotificationController {
     return this.notificationService.createNotification(notification);
   }
 
-  @PutMapping
-  public Notification updateNotification(@RequestBody Notification notification) {
-    return this.notificationService.updateNotification(notification);
+  @PutMapping("/{id}")
+  public Notification updateNotification(@PathVariable("id") String id) {
+    return this.notificationService.setConfirmation(id);
   }
 
 }

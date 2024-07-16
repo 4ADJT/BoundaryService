@@ -2,6 +2,8 @@ package br.com.fiap.boundaryservice.model.entity;
 
 import br.com.fiap.boundaryservice.model.utils.NotificationENUM;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -30,5 +32,13 @@ public class Notification {
 
   @LastModifiedDate
   private Instant updatedAt;
+
+  public Notification() {
+    if(this.isConfirmation()) {
+      return;
+    }
+
+    this.confirmation = false;
+  }
 
 }

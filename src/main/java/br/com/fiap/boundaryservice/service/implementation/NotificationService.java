@@ -5,6 +5,7 @@ import br.com.fiap.boundaryservice.repository.INotificationRepository;
 import br.com.fiap.boundaryservice.service.INotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -35,10 +36,12 @@ public class NotificationService implements INotificationService {
   }
 
   @Override
-  public Notification updateNotification(Notification notification) {
-    notification = this.repository
-        .findById(notification.getId())
+  public Notification setConfirmation(String id) {
+    Notification notification = this.repository
+        .findById(id)
         .orElseThrow(() -> new IllegalArgumentException("Notification not found"));
+
+    notification.setConfirmation(!notification.isConfirmation());
 
     return this.repository.save(notification);
   }

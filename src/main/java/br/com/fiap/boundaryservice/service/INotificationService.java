@@ -12,5 +12,5 @@ public interface INotificationService {
 
   public Notification createNotification(Notification notification);
 
-  public Notification updateNotification(Notification notification);
+  public Notification setConfirmation(String id);
 }

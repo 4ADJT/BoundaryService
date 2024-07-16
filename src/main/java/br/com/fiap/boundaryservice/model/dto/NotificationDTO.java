@@ -21,7 +21,7 @@ public record NotificationDTO(
     String message,
 
     @NotEmpty(message = "Channels to send notification is required.")
-    List<NotificationENUM> sendChannel,
+    List<NotificationENUM> send_channels,
 
     @NotNull(message = "Confirmation is required.")
     boolean confirmation,
