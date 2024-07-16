@@ -26,9 +26,9 @@ public record NotificationDTO(
     @NotNull(message = "Confirmation is required.")
     boolean confirmation,
 
-    Instant createdAt,
+    Instant created_at,
 
-    Instant updatedAt
+    Instant updated_at
 
 ) {
 }
