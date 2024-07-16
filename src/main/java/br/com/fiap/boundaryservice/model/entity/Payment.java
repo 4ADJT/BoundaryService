@@ -3,9 +3,12 @@ package br.com.fiap.boundaryservice.model.entity;
 import br.com.fiap.boundaryservice.model.utils.PaymentStatusENUM;
 import br.com.fiap.boundaryservice.model.utils.PaymentTypeENUM;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Document
@@ -29,8 +32,10 @@ public class Payment {
 
   private double value;
 
-  private LocalDateTime createPayment;
+  @CreatedDate
+  private Instant createPayment;
 
-  private LocalDateTime updatedDate;
+  @LastModifiedDate
+  private Instant updatedDate;
 
 }

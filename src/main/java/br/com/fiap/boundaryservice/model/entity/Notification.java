@@ -1,18 +1,19 @@
 package br.com.fiap.boundaryservice.model.entity;
 
+import br.com.fiap.boundaryservice.model.utils.NotificationENUM;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Document
 @Data
 public class Notification {
-
-  enum Channels {
-    EMAIL, SMS, WHATSAPP, TELEGRAM
-  }
 
   @Id
   private String id;
@@ -21,12 +22,14 @@ public class Notification {
 
   private String message;
 
-  private Channels[] sendChannel;
+  private List<NotificationENUM> sendChannel;
 
   private boolean confirmation;
 
-  private LocalDateTime createdAt;
+  @CreatedDate
+  private Instant createdAt;
 
-  private LocalDateTime updatedAt;
+  @LastModifiedDate
+  private Instant updatedAt;
 
 }

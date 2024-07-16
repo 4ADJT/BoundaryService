@@ -31,7 +31,6 @@ public record PaymentDTO(
     @NotNull(message = "Value of payment is required.")
     double value,
 
-    @NotNull
     LocalDateTime createPayment,
 
     LocalDateTime updatedDate
