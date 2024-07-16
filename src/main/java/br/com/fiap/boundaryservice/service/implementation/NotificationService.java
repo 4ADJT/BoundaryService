@@ -1,26 +1,32 @@
 package br.com.fiap.boundaryservice.service.implementation;
 
+import br.com.fiap.boundaryservice.model.dto.NotificationDTO;
 import br.com.fiap.boundaryservice.model.entity.Notification;
+import br.com.fiap.boundaryservice.model.mapper.NotificationMapper;
 import br.com.fiap.boundaryservice.repository.INotificationRepository;
 import br.com.fiap.boundaryservice.service.INotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @Service
 public class NotificationService implements INotificationService {
   private final INotificationRepository repository;
+  private final NotificationMapper mapper;
 
   @Autowired
-  public NotificationService(INotificationRepository repository) {
+  public NotificationService(INotificationRepository repository, NotificationMapper mapper) {
     this.repository = repository;
+    this.mapper = mapper;
   }
 
   @Override
-  public List<Notification> getNotifications() {
-    return this.repository.findAll();
+  public Page<NotificationDTO> getNotifications(Pageable pageable) {
+
+    Page<Notification> notifications = this.repository.findAll(pageable);
+
+    return notifications.map(mapper::toDTO);
   }
 
   @Override
@@ -31,8 +37,12 @@ public class NotificationService implements INotificationService {
   }
 
   @Override
-  public Notification createNotification(Notification notification) {
-    return this.repository.save(notification);
+  public NotificationDTO createNotification(NotificationDTO notificationDTO) {
+    Notification notification = mapper.toEntity(notificationDTO);
+
+    notification = this.repository.save(notification);
+
+    return mapper.toDTO(notification);
   }
 
   @Override

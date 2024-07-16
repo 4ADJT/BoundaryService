@@ -1,16 +1,17 @@
 package br.com.fiap.boundaryservice.service;
 
+import br.com.fiap.boundaryservice.model.dto.NotificationDTO;
 import br.com.fiap.boundaryservice.model.entity.Notification;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface INotificationService {
 
-  public List<Notification> getNotifications();
+  public Page<NotificationDTO> getNotifications(Pageable pageable);
 
   public Notification getNotification(String id);
 
-  public Notification createNotification(Notification notification);
+  public NotificationDTO createNotification(NotificationDTO notificationDTO);
 
   public Notification setConfirmation(String id);
 }
