@@ -23,6 +23,10 @@ public class Notification {
 
   private String message;
 
+  private String email;
+
+  private String cellphone;
+
   private List<NotificationENUM> sendChannel;
 
   private boolean confirmation;

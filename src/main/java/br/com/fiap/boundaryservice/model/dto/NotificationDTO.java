@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 import java.util.List;
 
@@ -19,6 +18,10 @@ public record NotificationDTO(
 
     @NotBlank(message = "Message is required.")
     String message,
+
+    String email,
+
+    String cellphone,
 
     @NotEmpty(message = "Channels to send notification is required.")
     List<NotificationENUM> send_channels,

@@ -1,5 +1,7 @@
 package br.com.fiap.boundaryservice.model.entity;
 
+import br.com.fiap.boundaryservice.model.entity.action.Card;
+import br.com.fiap.boundaryservice.model.entity.action.Pix;
 import br.com.fiap.boundaryservice.model.utils.PaymentStatusENUM;
 import br.com.fiap.boundaryservice.model.utils.PaymentTypeENUM;
 import lombok.Data;
@@ -31,6 +33,10 @@ public class Payment {
   private LocalDateTime paymentDate;
 
   private double value;
+
+  private Pix pix;
+
+  private Card card;
 
   @CreatedDate
   private Instant createPayment;
