@@ -39,9 +39,9 @@ public class Payment {
   private Card card;
 
   @CreatedDate
-  private Instant createPayment;
+  private Instant createdAt;
 
   @LastModifiedDate
-  private Instant updatedDate;
+  private Instant updatedAt;
 
 }

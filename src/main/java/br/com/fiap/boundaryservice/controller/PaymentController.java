@@ -8,11 +8,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @RestController
 @RequestMapping(value = "/payment")
@@ -27,8 +30,10 @@ public class PaymentController {
 
   @GetMapping
   @Operation(summary = "Get payment record", description = "This route retrieves the payments recorded at the boundary.")
-  public List<Payment> getPayments() {
-    return this.paymentService.getPayments();
+  public Page<PaymentDTO> getPayments(
+      @PageableDefault(size = 10, page = 0, sort = "createPayment", direction = Sort.Direction.DESC) Pageable pageable
+  ) {
+    return this.paymentService.getPayments(pageable);
   }
 
   @GetMapping("/{id}")

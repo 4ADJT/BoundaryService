@@ -38,8 +38,8 @@ public record PaymentDTO(
 
     Card card,
 
-    Instant createPayment,
+    Instant createdAt,
 
-    Instant updatedDate
+    Instant updatedAt
 ) {
 }

@@ -5,14 +5,14 @@ import br.com.fiap.boundaryservice.model.entity.Notification;
 import br.com.fiap.boundaryservice.service.implementation.NotificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/notification")
@@ -28,7 +28,7 @@ public class NotificationController {
   @GetMapping
   @Operation(summary = "Get notifications records", description = "This route retrieves the notifications recorded at the boundary.")
   public Page<NotificationDTO> getNotifications(
-      @PageableDefault(size = 10, page = 0, sort = "id") Pageable pageable
+      @PageableDefault(size = 10, page = 0, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable
   ) {
     return this.notificationService.getNotifications(pageable);
   }
