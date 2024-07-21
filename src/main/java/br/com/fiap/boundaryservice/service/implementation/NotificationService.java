@@ -30,10 +30,10 @@ public class NotificationService implements INotificationService {
   }
 
   @Override
-  public Notification getNotification(String id) {
-    return this.repository
+  public NotificationDTO getNotification(String id) {
+    return mapper.toDTO(this.repository
         .findById(id)
-        .orElseThrow(() -> new IllegalArgumentException("Notification not found"));
+        .orElseThrow(() -> new IllegalArgumentException("Notification not found")));
   }
 
   @Override
@@ -46,13 +46,13 @@ public class NotificationService implements INotificationService {
   }
 
   @Override
-  public Notification setConfirmation(String id) {
+  public NotificationDTO setConfirmation(String id) {
     Notification notification = this.repository
         .findById(id)
         .orElseThrow(() -> new IllegalArgumentException("Notification not found"));
 
     notification.setConfirmation(!notification.isConfirmation());
 
-    return this.repository.save(notification);
+    return mapper.toDTO(this.repository.save(notification));
   }
 }

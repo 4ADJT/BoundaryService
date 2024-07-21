@@ -35,7 +35,7 @@ public class NotificationController {
 
   @GetMapping("/{id}")
   @Operation(summary = "Get one payment record", description = "This route retrieves the notifications recorded by id at the boundary.")
-  public Notification getNotificationById(@PathVariable("id") String id) {
+  public NotificationDTO getNotificationById(@PathVariable("id") String id) {
     return this.notificationService.getNotification(id);
   }
 
@@ -46,7 +46,7 @@ public class NotificationController {
   }
 
   @PutMapping("/{id}")
-  public Notification updateNotification(@PathVariable("id") String id) {
+  public NotificationDTO updateNotification(@PathVariable("id") String id) {
     return this.notificationService.setConfirmation(id);
   }
 

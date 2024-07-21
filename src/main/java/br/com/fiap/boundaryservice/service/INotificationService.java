@@ -9,9 +9,9 @@ public interface INotificationService {
 
   public Page<NotificationDTO> getNotifications(Pageable pageable);
 
-  public Notification getNotification(String id);
+  public NotificationDTO getNotification(String id);
 
   public NotificationDTO createNotification(NotificationDTO notificationDTO);
 
-  public Notification setConfirmation(String id);
+  public NotificationDTO setConfirmation(String id);
 }
