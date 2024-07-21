@@ -1,7 +1,6 @@
 package br.com.fiap.boundaryservice.service;
 
 import br.com.fiap.boundaryservice.model.dto.NotificationDTO;
-import br.com.fiap.boundaryservice.model.entity.Notification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

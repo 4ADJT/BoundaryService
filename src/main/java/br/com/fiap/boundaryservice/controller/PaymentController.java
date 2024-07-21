@@ -1,7 +1,7 @@
 package br.com.fiap.boundaryservice.controller;
 
 import br.com.fiap.boundaryservice.model.dto.PaymentDTO;
-import br.com.fiap.boundaryservice.model.entity.Payment;
+
 import br.com.fiap.boundaryservice.service.IPaymentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -38,7 +38,7 @@ public class PaymentController {
 
   @GetMapping("/{id}")
   @Operation(summary = "Get one payment record", description = "This route retrieves the payments recorded by id at the boundary.")
-  public Payment getPaymentById(@PathVariable("id") String id) {
+  public PaymentDTO getPaymentById(@PathVariable("id") String id) {
     return this.paymentService.getPayment(id);
   }
 

@@ -35,10 +35,10 @@ public class PaymentService implements IPaymentService {
   }
 
   @Override
-  public Payment getPayment(String id) {
-    return this.repository
+  public PaymentDTO getPayment(String id) {
+    return paymentMapper.toDTO(this.repository
         .findById(id)
-        .orElseThrow(() -> new IllegalArgumentException("Payment not found"));
+        .orElseThrow(() -> new IllegalArgumentException("Payment not found")));
   }
 
   @Override

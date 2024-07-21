@@ -1,7 +1,7 @@
 package br.com.fiap.boundaryservice.controller;
 
 import br.com.fiap.boundaryservice.model.dto.NotificationDTO;
-import br.com.fiap.boundaryservice.model.entity.Notification;
+
 import br.com.fiap.boundaryservice.service.implementation.NotificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
