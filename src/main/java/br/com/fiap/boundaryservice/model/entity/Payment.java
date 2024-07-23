@@ -20,11 +20,11 @@ public class Payment {
   @Id
   private String id;
 
+  private String customerId;
+
   private boolean test;
 
   private boolean paid;
-
-  private String customer;
 
   private PaymentStatusENUM status;
 

@@ -13,6 +13,9 @@ public record NotificationDTO(
 
     String id,
 
+    @NotNull(message = "Customer id is required.")
+    String customerId,
+
     @NotBlank(message = "Tittle is required.")
     String title,
 

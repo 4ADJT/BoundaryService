@@ -13,6 +13,9 @@ public record PaymentDTO(
 
     String id,
 
+    @NotNull(message = "Customer id is required.")
+    String customerId,
+
     @NotNull(message = "Test flag is required.")
     boolean test,
 
