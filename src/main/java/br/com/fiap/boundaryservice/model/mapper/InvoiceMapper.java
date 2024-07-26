@@ -8,7 +8,6 @@ import org.mapstruct.Mapper;
 public interface InvoiceMapper {
 
   InvoiceDTO toDTO(Invoice invoice);
-
   Invoice toEntity(InvoiceDTO invoiceDTO);
 
 }

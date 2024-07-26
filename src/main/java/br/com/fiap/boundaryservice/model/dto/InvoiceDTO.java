@@ -9,6 +9,8 @@ public record InvoiceDTO (
 
     LocalDateTime InvoiceDate,
 
+    double InvoiceAmount,
+
     Instant createdAt,
 
     Instant updatedAt

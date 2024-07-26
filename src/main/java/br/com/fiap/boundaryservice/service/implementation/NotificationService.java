@@ -21,6 +21,12 @@ public class NotificationService implements INotificationService {
     this.mapper = mapper;
   }
 
+  /**
+   * Obter as notificações
+   *
+   * @param pageable
+   * @return Page<NotificationDTO>
+   */
   @Override
   public Page<NotificationDTO> getNotifications(Pageable pageable) {
 
@@ -29,6 +35,12 @@ public class NotificationService implements INotificationService {
     return notifications.map(mapper::toDTO);
   }
 
+  /**
+   * Obter notificação pelo ID
+   *
+   * @param id
+   * @return NotificationDTO
+   */
   @Override
   public NotificationDTO getNotification(String id) {
     return mapper.toDTO(this.repository
@@ -36,6 +48,12 @@ public class NotificationService implements INotificationService {
         .orElseThrow(() -> new IllegalArgumentException("Notification not found")));
   }
 
+  /**
+   * Cria uma nova notificação
+   *
+   * @param NotificationDTO
+   * @return NotificationDTO
+   */
   @Override
   public NotificationDTO createNotification(NotificationDTO notificationDTO) {
     Notification notification = mapper.toEntity(notificationDTO);
@@ -45,6 +63,11 @@ public class NotificationService implements INotificationService {
     return mapper.toDTO(notification);
   }
 
+  /**
+   *
+   * @param id
+   * @return NotificationDTO
+   */
   @Override
   public NotificationDTO setConfirmation(String id) {
     Notification notification = this.repository
