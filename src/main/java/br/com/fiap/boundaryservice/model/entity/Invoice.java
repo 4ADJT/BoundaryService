@@ -1,48 +1,30 @@
 package br.com.fiap.boundaryservice.model.entity;
 
-import br.com.fiap.boundaryservice.model.utils.NotificationENUM;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Document
 @Data
-public class Notification {
+public class Invoice {
 
   @Id
   private String id;
 
-  private String customerId;
+  private LocalDateTime InvoiceDate;
 
-  private String title;
-
-  private String message;
-
-  private String email;
-
-  private String cellphone;
-
-  private List<NotificationENUM> sendChannel;
-
-  private boolean confirmation;
+  private double InvoiceAmount;
 
   @CreatedDate
   private Instant createdAt;
 
   @LastModifiedDate
   private Instant updatedAt;
-
-  public Notification() {
-    if(this.isConfirmation()) {
-      return;
-    }
-
-    this.confirmation = false;
-  }
 
 }

@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
@@ -22,9 +23,11 @@ public class Payment {
 
   private String customerId;
 
-  private boolean test;
+   private boolean test;
 
   private boolean paid;
+
+  private String cpf;
 
   private PaymentStatusENUM status;
 
@@ -37,6 +40,9 @@ public class Payment {
   private Pix pix;
 
   private Card card;
+
+  @DBRef
+  private Invoice invoice;
 
   @CreatedDate
   private Instant createdAt;

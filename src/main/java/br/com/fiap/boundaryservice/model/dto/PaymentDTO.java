@@ -1,10 +1,12 @@
 package br.com.fiap.boundaryservice.model.dto;
 
+import br.com.fiap.boundaryservice.model.entity.Invoice;
 import br.com.fiap.boundaryservice.model.entity.action.Card;
 import br.com.fiap.boundaryservice.model.entity.action.Pix;
 import br.com.fiap.boundaryservice.model.utils.PaymentStatusENUM;
 import br.com.fiap.boundaryservice.model.utils.PaymentTypeENUM;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -22,8 +24,8 @@ public record PaymentDTO(
     @NotNull(message = "paid flag is required.")
     boolean paid,
 
-    @NotNull(message = "Customer is required.")
-    String customer,
+    @CPF
+    String cpf,
 
     @NotNull(message = "Status is required.")
     PaymentStatusENUM status,
@@ -40,6 +42,8 @@ public record PaymentDTO(
     Pix pix,
 
     Card card,
+
+    Invoice invoice,
 
     Instant createdAt,
 

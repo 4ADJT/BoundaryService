@@ -3,6 +3,8 @@ package br.com.fiap.boundaryservice.service.implementation;
 import br.com.fiap.boundaryservice.model.dto.PaymentDTO;
 import br.com.fiap.boundaryservice.model.entity.Payment;
 import br.com.fiap.boundaryservice.model.mapper.PaymentMapper;
+import br.com.fiap.boundaryservice.model.utils.PaymentStatusENUM;
+import br.com.fiap.boundaryservice.model.utils.PaymentTypeENUM;
 import br.com.fiap.boundaryservice.repository.IPaymentRepository;
 import br.com.fiap.boundaryservice.service.IPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,17 @@ public class PaymentService implements IPaymentService {
   @Override
   public PaymentDTO createPayment(PaymentDTO paymentDTO) {
     Payment paymentEntity = paymentMapper.toEntity(paymentDTO);
+
+    if (paymentEntity.getType() == PaymentTypeENUM.PIX && paymentEntity.getPix() == null) {
+      throw new IllegalArgumentException("Pix required");
+    }
+
+    if ((paymentEntity.getType() == PaymentTypeENUM.CREDIT || paymentEntity.getType() == PaymentTypeENUM.DEBIT) && paymentEntity.getCard() == null) {
+      throw new IllegalArgumentException("Card required");
+    }
+
+    paymentEntity.setPaid(true);
+    paymentEntity.setStatus(PaymentStatusENUM.PAID);
 
     paymentEntity = this.repository.save(paymentEntity);
     return paymentMapper.toDTO(paymentEntity);
