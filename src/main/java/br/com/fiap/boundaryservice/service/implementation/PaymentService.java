@@ -76,7 +76,7 @@ public class PaymentService implements IPaymentService {
       throw new IllegalArgumentException("Pix required");
     }
 
-    if ((paymentEntity.getType() == PaymentTypeENUM.CREDIT || paymentEntity.getType() == PaymentTypeENUM.DEBIT) && paymentEntity.getCard() == null) {
+    if ((paymentEntity.getType() == PaymentTypeENUM.CARD) && paymentEntity.getCard() == null) {
       throw new IllegalArgumentException("Card required");
     }
 
