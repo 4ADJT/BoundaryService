@@ -29,8 +29,6 @@ public class Payment {
 
   private PaymentTypeENUM type;
 
-  private LocalDateTime paymentDate;
-
   private double value;
 
   private Pix pix;

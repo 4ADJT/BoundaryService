@@ -8,7 +8,6 @@ import br.com.fiap.boundaryservice.model.utils.PaymentTypeENUM;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 public record PaymentDTO(
 
@@ -22,8 +21,6 @@ public record PaymentDTO(
 
     @NotNull(message = "Payment type is required.")
     PaymentTypeENUM type,
-
-    LocalDateTime paymentDate,
 
     @NotNull(message = "Value of payment is required.")
     double value,

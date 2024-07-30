@@ -85,7 +85,6 @@ public class PaymentService implements IPaymentService {
 
     Invoice invoice = new Invoice();
 
-    invoice.setInvoiceDate(paymentEntity.getPaymentDate());
     invoice.setInvoiceAmount(paymentEntity.getValue());
 
     Invoice savedInvoice = this.invoiceRepository.save(invoice);

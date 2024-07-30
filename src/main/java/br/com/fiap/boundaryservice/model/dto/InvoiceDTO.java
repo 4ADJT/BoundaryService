@@ -7,12 +7,8 @@ public record InvoiceDTO (
 
     String id,
 
-    LocalDateTime InvoiceDate,
-
     double InvoiceAmount,
 
-    Instant createdAt,
-
-    Instant updatedAt
+    Instant paymentDate
 
 ) {}
