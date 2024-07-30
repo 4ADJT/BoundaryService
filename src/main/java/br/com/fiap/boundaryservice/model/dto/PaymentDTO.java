@@ -18,19 +18,11 @@ public record PaymentDTO(
     @NotNull(message = "Customer id is required.")
     String customerId,
 
-    @NotNull(message = "Test flag is required.")
-    boolean test,
-
-    @NotNull(message = "paid flag is required.")
     boolean paid,
 
-    @CPF
-    String cpf,
-
-    @NotNull(message = "Status is required.")
     PaymentStatusENUM status,
 
-    @NotNull(message = "Customer is required.")
+    @NotNull(message = "Payment type is required.")
     PaymentTypeENUM type,
 
     @NotNull(message = "Payment date is required.")

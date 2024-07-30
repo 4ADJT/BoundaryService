@@ -7,10 +7,4 @@ public class Pix {
 
   private String key;
 
-  private int bank;
-
-  private int agency;
-
-  private int account;
-
 }

@@ -23,11 +23,7 @@ public class Payment {
 
   private String customerId;
 
-   private boolean test;
-
   private boolean paid;
-
-  private String cpf;
 
   private PaymentStatusENUM status;
 

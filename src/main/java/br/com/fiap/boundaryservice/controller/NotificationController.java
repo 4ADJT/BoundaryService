@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,27 +29,27 @@ public class NotificationController {
 
   @GetMapping
   @Operation(summary = "Get notifications records", description = "This route retrieves the notifications recorded at the boundary.")
-  public Page<NotificationDTO> getNotifications(
+  public ResponseEntity<Page<NotificationDTO>> getNotifications(
       @PageableDefault(size = 10, page = 0, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable
   ) {
-    return this.notificationService.getNotifications(pageable);
+    return new ResponseEntity<Page<NotificationDTO>>(this.notificationService.getNotifications(pageable), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
   @Operation(summary = "Get one payment record", description = "This route retrieves the notifications recorded by id at the boundary.")
-  public NotificationDTO getNotificationById(@PathVariable("id") String id) {
-    return this.notificationService.getNotification(id);
+  public ResponseEntity<NotificationDTO> getNotificationById(@PathVariable("id") String id) {
+    return new ResponseEntity<NotificationDTO>(this.notificationService.getNotification(id), HttpStatus.OK);
   }
 
   @PostMapping
   @Operation(summary = "Create one notification record", description = "This route creates a new notification.")
-  public NotificationDTO createNotification(@RequestBody NotificationDTO notificationDTO) {
-    return this.notificationService.createNotification(notificationDTO);
+  public ResponseEntity<NotificationDTO> createNotification(@RequestBody NotificationDTO notificationDTO) {
+    return new ResponseEntity<NotificationDTO>(this.notificationService.createNotification(notificationDTO), HttpStatus.CREATED);
   }
 
   @PutMapping("/{id}")
-  public NotificationDTO updateNotification(@PathVariable("id") String id) {
-    return this.notificationService.setConfirmation(id);
+  public ResponseEntity<NotificationDTO> updateNotification(@PathVariable("id") String id) {
+    return new ResponseEntity<NotificationDTO>(this.notificationService.setConfirmation(id), HttpStatus.OK);
   }
 
 }

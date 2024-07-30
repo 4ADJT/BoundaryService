@@ -30,16 +30,16 @@ public class PaymentController {
 
   @GetMapping
   @Operation(summary = "Get payment record", description = "This route retrieves the payments recorded at the boundary.")
-  public Page<PaymentDTO> getPayments(
+  public ResponseEntity<Page<PaymentDTO>> getPayments(
       @PageableDefault(size = 10, page = 0, sort = "createPayment", direction = Sort.Direction.DESC) Pageable pageable
   ) {
-    return this.paymentService.getPayments(pageable);
+    return new ResponseEntity<Page<PaymentDTO>>(this.paymentService.getPayments(pageable), HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
   @Operation(summary = "Get one payment record", description = "This route retrieves the payments recorded by id at the boundary.")
-  public PaymentDTO getPaymentById(@PathVariable("id") String id) {
-    return this.paymentService.getPayment(id);
+  public ResponseEntity<PaymentDTO> getPaymentById(@PathVariable("id") String id) {
+    return new ResponseEntity<PaymentDTO>(this.paymentService.getPayment(id), HttpStatus.OK);
   }
 
   @PostMapping
