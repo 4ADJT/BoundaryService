@@ -6,7 +6,6 @@ import br.com.fiap.boundaryservice.model.entity.action.Pix;
 import br.com.fiap.boundaryservice.model.utils.PaymentStatusENUM;
 import br.com.fiap.boundaryservice.model.utils.PaymentTypeENUM;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -15,7 +14,6 @@ public record PaymentDTO(
 
     String id,
 
-    @NotNull(message = "Customer id is required.")
     String customerId,
 
     boolean paid,
@@ -25,7 +23,6 @@ public record PaymentDTO(
     @NotNull(message = "Payment type is required.")
     PaymentTypeENUM type,
 
-    @NotNull(message = "Payment date is required.")
     LocalDateTime paymentDate,
 
     @NotNull(message = "Value of payment is required.")
