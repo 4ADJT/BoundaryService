@@ -19,7 +19,7 @@ public class NotificationScheduler {
     this.repository = repository;
   }
 
-  @Scheduled(fixedRate = 30000)
+  @Scheduled(fixedRate = 300000)
   public void scheduleNotification() {
     LocalDateTime now = LocalDateTime.now();
 
