@@ -1,14 +1,14 @@
 package br.com.fiap.boundaryservice.model.entity;
 
-import br.com.fiap.boundaryservice.model.utils.NotificationENUM;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigInteger;
 import java.time.Instant;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Document
 @Data
@@ -17,7 +17,7 @@ public class Notification {
   @Id
   private String id;
 
-  private String customerId;
+  private String parkingId;
 
   private String title;
 
@@ -25,11 +25,11 @@ public class Notification {
 
   private String email;
 
-  private String cellphone;
-
-  private List<NotificationENUM> sendChannel;
-
   private boolean confirmation;
+
+  private BigInteger duration;
+
+  private LocalDateTime expirationTime;
 
   @CreatedDate
   private Instant createdAt;

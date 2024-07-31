@@ -9,7 +9,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface NotificationMapper {
 
-  @Mapping(target = "send_channels", source = "sendChannel")
   @Mapping(target = "created_at", source = "createdAt")
   @Mapping(target = "updated_at", source = "updatedAt")
   NotificationDTO toDTO(Notification notification);

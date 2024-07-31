@@ -1,20 +1,20 @@
 package br.com.fiap.boundaryservice.model.dto;
 
-import br.com.fiap.boundaryservice.model.utils.NotificationENUM;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigInteger;
 import java.time.Instant;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 public record NotificationDTO(
 
     String id,
 
-    @NotNull(message = "Customer id is required.")
-    String customerId,
+    @NotNull(message = "Parking id is required.")
+    String parkingId,
 
     @NotBlank(message = "Tittle is required.")
     String title,
@@ -22,15 +22,15 @@ public record NotificationDTO(
     @NotBlank(message = "Message is required.")
     String message,
 
+    @Email
     String email,
-
-    String cellphone,
-
-    @NotEmpty(message = "Channels to send notification is required.")
-    List<NotificationENUM> send_channels,
 
     @NotNull(message = "Confirmation is required.")
     boolean confirmation,
+
+    BigInteger duration,
+
+    LocalDateTime expirationTime,
 
     Instant created_at,
 
